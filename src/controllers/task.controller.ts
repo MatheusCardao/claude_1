@@ -3,12 +3,13 @@ import { Task, TaskStatus } from '../models/task.model';
 
 export class TaskController {
   async createTask(req: Request, res: Response) {
-    const { title } = req.body;
+    const { title, status } = req.body;
     const newTask: Task = {
       id: crypto.randomUUID(),
       title,
       completed: false,
       createdAt: new Date(),
+      status
     };
     // Salva a nova tarefa no banco de dados (não implementado aqui)
     res.status(201).json(newTask);
